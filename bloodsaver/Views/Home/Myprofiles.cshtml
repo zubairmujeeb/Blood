@@ -1,0 +1,52 @@
+﻿@model bloodsaver.Models.registration
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Myprofile</title>
+
+    <script src="~/Scripts/jquery-1.8.2.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#file").on("change", function () {
+              
+                var files = !!this.files ? this.files : [];
+                if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
+
+                if (/^image/.test(files[0].type)) { // only image file
+                    var reader = new FileReader(); // instance of the FileReader
+                    reader.readAsDataURL(files[0]); // read the local file
+
+                    reader.onloadend = function () { // set image data as background of div
+                      
+                        $("#img").attr('src', this.result);
+                    }
+                }
+            });
+        });
+    </script>  
+</head>
+<body>
+   @using (Html.BeginForm("Myprofile", "Home", FormMethod.Post,
+    new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <fieldset>
+        <legend>Upload a file</legend>
+        <div class="editor-field">
+            @Html.TextBox("file", "", new { type = "file" })
+        </div>
+        <div class="editor-field">
+            <input type="submit" value="Upload" />
+        </div>
+    </fieldset>
+}
+</body>
+</html>

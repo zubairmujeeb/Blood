@@ -1,0 +1,75 @@
+﻿@model bloodsaver.Models.registration
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<script src="~/Scripts/jquery-1.8.2.intellisense.js"></script>
+<script src="~/Scripts/jquery-1.8.2.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css" />
+<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js">
+</script>
+<link href="~/Styles/loginstylesheet.css" rel="stylesheet" />
+<script src="~/Jquery/loginjqueryfiles.js"></script>
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>login</title>
+    
+</head>
+
+    <body>
+        <div class="o">
+            <div class="login-page">
+                <div class="form" align="center">
+                    <hr />
+                    <div align="center" class="input">
+                        <h1 style="color:red"> Login. </h1>
+                        <p>Please Enter Your Credentionals. </p>
+                    </div>
+
+                    <hr />
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+
+                       
+                        
+
+
+                        <div class="editor-label">
+                           
+                            Email
+                        </div>
+                        <div class="editor-field">
+                            @Html.EditorFor(model => model.email, new { htmlAttributes = new { title = "Your Placeholder Text" } })
+
+                            @Html.ValidationMessageFor(model => model.email)
+
+                        </div>
+
+                        <div class="editor-label">
+                           Password
+                        </div>
+                        <div class="editor-field">
+                            @Html.EditorFor(model => model.password,"password")
+                            @Html.ValidationMessageFor(model => model.password)
+                        </div>
+                        <span id="spantext"></span>
+                        <p>
+                            <input class="button" type="submit" value="Create" />
+                        </p>
+
+                        <p class="message">Not registered? <a>Create an account</a></p>
+
+                    }
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>

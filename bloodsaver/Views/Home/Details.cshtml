@@ -1,0 +1,118 @@
+﻿@model bloodsaver.Models.registration
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <fieldset>
+        <legend>registration</legend>
+    @Html.DisplayFor(model => model.id)
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.name)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.name)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.cnic)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.cnic)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.email)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.email)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.password)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.password)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.gender)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.gender)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.status)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.status)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.bloodgroup)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.bloodgroup)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.cellno)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.cellno)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.statuscell)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.statuscell)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.country)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.country)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.city)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.city)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.textarea)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.textarea)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.filenames)
+        </div>
+        <div class="display-field">
+            @Html.EditorFor(model => model.filenames)
+
+
+            
+          
+        </div>
+    </fieldset>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id=Model.id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

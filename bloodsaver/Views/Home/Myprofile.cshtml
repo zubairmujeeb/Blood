@@ -1,0 +1,139 @@
+﻿@model bloodsaver.Models.registration
+
+@{
+    Layout = null;
+}
+
+<link href="~/Styles/StyleSheet1.css" rel="stylesheet" />
+<!DOCTYPE html>
+<script src="~/Scripts/jquery-1.8.2.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+
+        $('#File1').change(function () {
+
+            var valu = $('#File1').val();
+           // alert(valu);
+           // $('#filenames').val(valu);
+
+
+            if (valu.substring(3, 11) == 'fakepath') {
+               // alert("sub part");
+                valuz = valu.substring(12,100);
+
+              $('#filenames').val("~/images/" + valuz);
+
+                var agaik = $('#filenames').val();
+                alert(agaik);
+                localStorage.setItem('AdminId', agaik);
+                var id = localStorage.getItem('AdminId');
+               
+               // alert(id);
+                
+                //alert(agaik);
+               // alert(valuz);
+            }
+
+        })
+
+    })
+</script>
+
+<style>
+    img {
+        margin-right: 50px;
+        display: block;
+        max-width: 120px;
+        max-height: 40px;
+        width: auto;
+        height: auto;
+        border-radius: 40%;
+    }
+</style>
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Myprofile</title>
+</head>
+
+@*"Myprofile", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }*@
+
+
+<body>
+    
+
+    @using (Html.BeginForm("Myprofile", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+    <div class="form">
+       
+        <h1>Your Profile </h1>
+        <p>set your profile by your way </p>
+
+        @Html.HiddenFor(model => model.id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.name)
+            @Html.ValidationMessageFor(model => model.name)
+        </div>
+
+      
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.email)
+            @Html.ValidationMessageFor(model => model.email)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.password)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.password,"password")
+            @Html.ValidationMessageFor(model => model.password)
+        </div>
+
+        <div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.filenames)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.filenames)
+                @Html.ValidationMessageFor(model => model.filenames)
+            </div>
+
+        </div>
+
+
+        <div>
+            Upload a photo :
+        </div>
+
+
+        <div class="editor-field">
+            <input name="filename" id="File1" type="file" />
+            @*@Html.TextBox("filenames", "", new { type = "file" })*@
+        </div>
+
+        <p>
+        <p>
+            <input class="button" type="submit" value="Save" />
+        </p>
+    </div>
+    }
+    
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</body>
+</html>

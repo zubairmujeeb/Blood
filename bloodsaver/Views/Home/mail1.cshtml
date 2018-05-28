@@ -1,0 +1,83 @@
+﻿@model bloodsaver.Models.registration
+
+@{
+    Layout = null;
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<script src="~/Scripts/jquery-1.8.2.min.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<head>
+    <title></title>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#email').attr('readonly', 'true');
+            $('#dilogs').dialog({
+                modal: false,
+                draggable: false,
+                resizable: false,
+                closeOnEscape: false,
+                title: 'Email Box',
+                width: 600,
+                height: 400
+               
+
+            });
+
+
+
+
+
+        })
+
+    </script>
+
+</head>
+    <!DOCTYPE html>
+
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>mail</title>
+    </head>
+    <body>
+        @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+      
+                
+                <div id="dilog" style="padding:17px" align="center" >
+
+                    <div class="editor-label">
+                        <b>  @Html.LabelFor(model => model.email) </b>
+                    </div>
+                    
+                    <div class="editor-field" style="padding:7px;">
+                        @Html.EditorFor(model => model.email)
+                        @Html.ValidationMessageFor(model => model.email)
+                    </div>
+                   
+                    <div class="editor-label" style="padding:7px;">
+                        @Html.LabelFor(model => model.textarea)
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextArea("Comments", "", 10, 50, null)
+                        @*@Html.EditorFor(model => model.textarea)
+                        @Html.ValidationMessageFor(model => model.textarea)*@
+                    </div>
+
+                    <p>
+                        <input type="submit" value="save"/>
+                    </p>
+                </div>
+         
+    }
+
+       
+    </body>
+    </html>

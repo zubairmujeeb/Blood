@@ -1,0 +1,181 @@
+@model  bloodsaver.Models.HomeViewModel
+  
+                  
+             
+
+@{
+    ViewBag.Title = "View1";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<script src="~/Scripts/jquery-1.8.2.min.js"></script>
+
+<style type="text/css" >
+    #stid{
+        width:150px;
+        text-align:center;
+        
+    }
+  
+    #dzx{
+        width:150px;
+    }
+    #bh{
+        border:5px solid red;
+        width:430px;
+        height:220px;
+       margin-left:35%;
+    }
+    #s{
+        width:70%;
+    }
+
+
+</style>
+
+<script>
+
+    $(document).ready(function () {
+       
+        $("#stid").change(function () {
+           var k = $("#stid option:selected").val();
+           if ($("#stid option:selected").val() > 0) {
+
+              
+
+               $.ajax({
+                   type: 'POST',
+                   datatype: "json",
+
+                   url: "get",
+
+                   data: { stid: $("#stid option:selected").val() },
+                 
+                   success: function (data) {
+                       var district = "<select stid='stid'>";
+                       district = district + '<option value="">--Select--</option>';
+                       for (var i = 0; i < data.length; i++) {
+                           district = district + '<option >' + data[i] + '</ br></option>';
+                       }
+                       district = district + '</select>';
+                       $('#uid').html(district);
+                   }
+               })
+            }
+           else {
+
+
+               var district = "<select stid='stid'>";
+               district = district + '<option value="">--You Didnot select any Country--</option>';
+              
+               district = district + '</select>';
+               $('#dzx').html(district);
+            }
+        })
+
+    })
+
+</script>
+
+ 
+<h2 align=" center">Home</h2>
+<p align="center">
+    Donate Your Blood And Live Wisely. 
+</p>
+<hr id="s" />
+<br />
+
+@using (Html.BeginForm("Home", "Home", FormMethod.Post))
+{
+        <div align="center" id="bh" >          
+            <h2> Select Country </h2>: 
+    @Html.DropDownListFor(M => M.stid, ViewBag.dz as List< SelectListItem>, "--Select--", new { @stid = "stid" })
+   
+
+            <h2> Select City</h2> :
+    
+            @*@Html.DropDownListFor(M => M.d, ViewBag.dz as List<SelectListItem>, "--Select--", new { @stid = "stid" })*@
+
+            @Html.DropDownListFor(M => M.uid, ViewBag.dzx as List<SelectListItem>, "--Select--", new { @uid = "uid" })
+                    
+            @*@Html.DropDownList("dzx", "--Select--")*@
+            <br />
+            <br />
+        
+    <input id="Submit1" type="submit" value="submit" />
+            <br />
+            <br />
+   
+</div>
+
+  
+    @*foreach (var items in Model.registration)
+{
+   @items.name
+}*@
+
+
+
+
+<table style="margin:17px " border="1">
+    <tr>
+        <th>
+           Name
+        </th>
+
+        <th>
+           Email
+        </th>
+        <th>
+           Status
+        </th>
+        <th>
+            Cell Number
+        </th>
+        <th>
+            status Cell
+        </th>
+        <th>
+            Contact
+        </th>
+      
+        
+    </tr>
+
+@foreach (var item in Model.registration) {
+    <tr>
+        <td>
+           @item.name
+        </td>
+        <td>
+            @item.email
+        </td>
+        <td>
+            @item.status
+        </td>
+        <td>
+            @item.cellno
+        </td>
+        <td>
+            @item.statuscell
+        </td>
+
+        <td>
+            @Html.ActionLink("email", "mail", "Home", new { Id = item.id},null)
+        </td>
+     
+    </tr>
+}
+
+</table>
+
+    
+}  
+
+
+
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               

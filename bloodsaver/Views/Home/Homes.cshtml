@@ -1,0 +1,35 @@
+﻿@model IEnumerable<bloodsaver.Models.citys>
+
+
+
+
+
+@{
+    ViewBag.Title = "Homes";
+}
+
+<h2>Homes</h2>
+
+
+
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.city)
+        </th>
+      
+        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.city)
+        </td>
+      
+     
+    </tr>
+}
+
+</table>

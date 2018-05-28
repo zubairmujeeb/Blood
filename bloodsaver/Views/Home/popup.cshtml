@@ -1,0 +1,71 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+
+
+
+<style>
+    .highlight {
+        padding-top:7px;
+        text-align:center;
+        
+    }
+</style>
+
+
+<script src="~/Scripts/jquery-1.8.2.min.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>popup</title>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+           
+            $('#pop').addClass("highlight").dialog({
+                modal: true,
+                draggable: false,
+                resizable: false,
+                dialogClass: 'dialogStyle',
+                closeOnEscape: false,
+                title: 'Alert',
+                width: 400,
+                height: 200,
+                buttons: [{
+                    text: "Login",
+                    click: function () {
+                        location.href = "log";
+                    }
+                }],
+                position: {
+                    my: 'center',
+                    at: 'center'
+                },
+                show: { effect: "fade", duration: 800 },
+                
+                
+
+
+            });
+
+        })
+
+    </script>
+
+</head>
+<body>
+    <div id="pop">
+        <h2 style="color:red">
+            Please Login First !
+        </h2>
+    </div>
+</body>
+</html>
